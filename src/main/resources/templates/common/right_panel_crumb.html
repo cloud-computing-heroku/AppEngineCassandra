@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Right Panel</title>
+</head>
+<body>
+<!-- Bread Crumbs -->
+<!--<div th:fragment="right-panel-crumb">-->
+<div class="breadcrumbs" th:fragment="right-panel-crumb">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1 th:text="${title}">Dashboard</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li>
+                        ::marker
+                        <a href="#" th:text="${parent}"></a>
+                    </li>
+                    <li>
+                        ::marker
+                        ::before
+                        <a href="#" th:text="${sub_parent}"></a>
+                    </li>
+                    <li class="active">
+                        ::marker
+                        ::before
+                        <a href="#" th:text="${sub_active}"></a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!--</div>-->
+</body>
+</html>

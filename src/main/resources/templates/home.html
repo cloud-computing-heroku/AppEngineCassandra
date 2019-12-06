@@ -1,26 +1,93 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="css/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="css/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="css/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="css/vendors/jqvmap/dist/jqvmap.min.css">
+
+
+    <link rel="stylesheet" href="css/assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
     <title>Home</title>
 </head>
 <body>
-<h1>Home</h1>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>Password</th>
-        <th>Fullname</th>
-    </tr>
-    <th:block th:each="user : ${accountList}">
-        <tr>
-            <td th:text="${user.getId()}"></td>
-            <td th:text="${user.getUsername()}"></td>
-            <td th:text="${user.getPassword()}"></td>
-            <td th:text="${user.getFullname()}"></td>
-        </tr>
-    </th:block>
-</table>
+
+<!-- Left Panel -->
+<div th:replace="/common/left_panel :: left-panel"></div>
+<!-- Left Panel -->
+
+<!-- Right Panel -->
+<div id="right-panel" class="right-panel">
+    <div th:replace="/common/right_panel_header :: right-panel-header"></div>
+    <div th:replace="/common/right_panel_crumb :: right-panel-crumb"></div>
+    <div class="content mt-3">
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Fullname</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="user : ${accountList}">
+                    <tr>
+                        <td th:text="${user.getId()}"></td>
+                        <td th:text="${user.getUsername()}"></td>
+                        <td th:text="${user.getPassword()}"></td>
+                        <td th:text="${user.getFullname()}"></td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Right Panel -->
+
+<script src="css/vendors/jquery/dist/jquery.min.js"></script>
+<script src="css/vendors/popper.js/dist/umd/popper.min.js"></script>
+<script src="css/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="css/assets/js/main.js"></script>
+<script src="css/vendors/chart.js/dist/Chart.bundle.min.js"></script>
+<script src="css/assets/js/dashboard.js"></script>
+<script src="css/assets/js/widgets.js"></script>
+<script src="css/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="css/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+<script src="css/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script>
+    (function ($) {
+        "use strict";
+
+        jQuery('#vmap').vectorMap({
+            map: 'world_en',
+            backgroundColor: null,
+            color: '#ffffff',
+            hoverOpacity: 0.7,
+            selectedColor: '#1de9b6',
+            enableZoom: true,
+            showTooltip: true,
+            values: sample_data,
+            scaleColors: ['#1de9b6', '#03a9f5'],
+            normalizeFunction: 'polynomial'
+        });
+    })(jQuery);
+</script>
+
 </body>
 </html>

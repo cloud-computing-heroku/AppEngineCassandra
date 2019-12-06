@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+</head>
+<body>
+<h1>Customer</h1>
+<table>
+    <tr>
+        <th>FullName</th>
+        <th>Gender</th>
+        <th>Mail</th>
+        <th>Phone</th>
+        <th>DateOfBirth</th>
+        <th>Address</th>
+        <th>CreatedAt</th>
+    </tr>
+    <th:block th:each="customer : ${listCustomer}">
+        <tr>
+            <td th:text="${customer.getFullname()}"></td>
+            <td th:text="${customer.getGender()}"></td>
+            <td th:text="${customer.getMail()}"></td>
+            <td th:text="${customer.getPhone()}"></td>
+            <td th:text="${customer.getDateOfBirth()}"></td>
+            <td th:text="${customer.getAddress()}"></td>
+            <td th:text="${customer.getCreatedAt()}"></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

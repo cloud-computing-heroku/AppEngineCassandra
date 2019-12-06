@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Details</title>
+</head>
+<body>
+<h1>Details</h1>
+<table>
+    <tr>
+        <th>FullName</th>
+        <td th:text="${detailsCutomer.getFullname()}"></td>
+    </tr>
+    <tr>
+        <th>Gender</th>
+        <td th:text="${detailsCutomer.getGender()}"></td>
+    </tr>
+    <tr>
+        <th>Mail</th>
+        <td th:text="${detailsCutomer.getMail()}"></td>
+    </tr>
+    <tr>
+        <th>Phone</th>
+        <td th:text="${detailsCutomer.getPhone()}"></td>
+    </tr>
+    <tr>
+        <th>DateOfBirth</th>
+        <td th:text="${detailsCutomer.getDateOfBirth()}"></td>
+    </tr>
+    <tr>
+        <th>Address</th>
+        <td th:text="${detailsCutomer.getAddress()}"></td>
+    </tr>
+    <tr>
+        <th>CreatedAt</th>
+        <td th:text="${detailsCutomer.getCreatedAt()}"></td>
+    </tr>
+
+</table>
+</body>
+</html>
