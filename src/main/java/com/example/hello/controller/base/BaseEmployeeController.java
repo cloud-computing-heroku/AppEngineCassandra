@@ -15,6 +15,9 @@ public class BaseEmployeeController {
     @RequestMapping(value = "/employee")
     public String getAll(Model model) {
         model.addAttribute("employeeList", this.employeeService.getAllEmployee());
+        model.addAttribute("root", "Category");
+        model.addAttribute("sub_root", "Components");
+        model.addAttribute("sub_active", "Employee");
         return "employee-info";
     }
 

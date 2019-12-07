@@ -15,6 +15,9 @@ public class BaseRoleController {
     @RequestMapping(value = "/role")
     public String getAll(Model model) {
         model.addAttribute("roleList", this.roleService.getAllRole());
+        model.addAttribute("root", "Category");
+        model.addAttribute("sub_root", "Admin");
+        model.addAttribute("sub_active", "Role");
         return "admin/role-info";
     }
 

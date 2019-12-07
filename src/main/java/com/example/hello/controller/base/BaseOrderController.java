@@ -15,6 +15,9 @@ public class BaseOrderController {
     @RequestMapping(value = "/order")
     public String getAll(Model model) {
         model.addAttribute("orderList", this.orderService.getAllOrder());
+        model.addAttribute("root", "Category");
+        model.addAttribute("sub_root", "Components");
+        model.addAttribute("sub_active", "Order");
         return "order-info";
     }
 

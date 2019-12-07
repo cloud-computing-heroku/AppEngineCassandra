@@ -23,6 +23,9 @@ public class BaseCustomerController {
     @RequestMapping(value = "/customer")
     public String getAll(Model model) {
         model.addAttribute("customerList", this.customerService.getAllCustomer());
+        model.addAttribute("root", "Category");
+        model.addAttribute("sub_root", "Components");
+        model.addAttribute("sub_active", "Customer");
         return "customer-info";
     }
 

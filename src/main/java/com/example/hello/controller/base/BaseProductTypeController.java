@@ -15,6 +15,9 @@ public class BaseProductTypeController {
     @RequestMapping(value = "/product-type")
     public String getAll(Model model) {
         model.addAttribute("productTypeList", this.productTypeService.getAllProductType());
+        model.addAttribute("root", "Category");
+        model.addAttribute("sub_root", "Components");
+        model.addAttribute("sub_active", "Product Type");
         return "product-type-info";
     }
 

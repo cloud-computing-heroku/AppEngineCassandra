@@ -16,6 +16,9 @@ public class BaseShiperController {
     @RequestMapping(value = "/shiper")
     public String getAll(Model model) {
         model.addAttribute("shiperList", this.shiperService.getAllShiper());
+        model.addAttribute("root", "Category");
+        model.addAttribute("sub_root", "Components");
+        model.addAttribute("sub_active", "Shiper");
         return "shiper-info";
     }
 

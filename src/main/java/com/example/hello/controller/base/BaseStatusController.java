@@ -15,6 +15,9 @@ public class BaseStatusController {
     @RequestMapping(value = "/status")
     public String getAll(Model model) {
         model.addAttribute("statusList", this.statusService.getAllStatus());
+        model.addAttribute("root", "Category");
+        model.addAttribute("sub_root", "Components");
+        model.addAttribute("sub_active", "Status");
         return "status-info";
     }
 

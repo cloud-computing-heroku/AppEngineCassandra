@@ -15,6 +15,9 @@ public class BaseAccountController {
     @RequestMapping(value = "/account")
     public String getAll(Model model) {
         model.addAttribute("accountList", this.accountService.getAllAccount());
+        model.addAttribute("root", "Category");
+        model.addAttribute("sub_root", "Admin");
+        model.addAttribute("sub_active", "Account");
         return "admin/account-info";
     }
 

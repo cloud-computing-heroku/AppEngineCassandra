@@ -15,6 +15,9 @@ public class BaseSupplierController {
     @RequestMapping(value = "/supplier")
     public String getAll(Model model) {
         model.addAttribute("supplierList", this.supplierService.getAllSupplier());
+        model.addAttribute("root", "Category");
+        model.addAttribute("sub_root", "Components");
+        model.addAttribute("sub_active", "Supplier");
         return "supplier-info";
     }
 

@@ -15,6 +15,9 @@ public class BaseProducerController {
     @RequestMapping(value = "/producer")
     public String getAll(Model model) {
         model.addAttribute("producerList", this.producerService.getAllProducer());
+        model.addAttribute("root", "Category");
+        model.addAttribute("sub_root", "Components");
+        model.addAttribute("sub_active", "Producer");
         return "producer-info";
     }
 
