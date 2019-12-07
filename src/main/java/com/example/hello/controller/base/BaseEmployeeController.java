@@ -1,19 +1,45 @@
 package com.example.hello.controller.base;
 
-import com.datastax.driver.core.utils.UUIDs;
-import com.example.hello.model.Customer;
-import com.example.hello.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.UUID;
-
-//@Controller
+@Controller
 public class BaseEmployeeController {
+
+    @RequestMapping(value = "/employee")
+    public String getAll() {
+        return "employee-info";
+    }
+
+    @RequestMapping(value = "/employee/details/{i}")
+    public String detailSupplier() {
+        return "employee-details";
+    }
+
+    @RequestMapping(value = "/employee/do-create")
+    public String doCreateSupplier() {
+        return "redirect:/employee";
+    }
+
+    @RequestMapping(value = "/employee/create")
+    public String createSupplier() {
+        return "employee-create";
+    }
+
+    @RequestMapping(value = "/employee/update/{id}")
+    public String updateSupplier() {
+        return "employee-update";
+    }
+
+    @RequestMapping(value = "/employee/do-update/{id}")
+    public String doUpdateSupplier() {
+        return "redirect:/employee";
+    }
+
+    @RequestMapping(value = "/employee/delete/{id}")
+    public String deleteSupplier() {
+        return "redirect:/employee";
+    }
 
  /*   @Autowired
     private CustomerService customerService;
