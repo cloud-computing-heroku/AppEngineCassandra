@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BaseRoleController {
     @RequestMapping(value = "/role")
     public String getAll() {
-        return "/admin/role-info";
+        return "admin/role-info";
     }
 
     @RequestMapping(value = "/role/details/{i}")
     public String detailRole() {
-        return "/admin/role-details";
+        return "admin/role-details";
     }
 
     @RequestMapping(value = "/role/do-create")
@@ -22,12 +22,12 @@ public class BaseRoleController {
 
     @RequestMapping(value = "/role/create")
     public String createRole() {
-        return "/admin/role-create";
+        return "admin/role-create";
     }
 
     @RequestMapping(value = "/role/update/{id}")
     public String updateRole() {
-        return "/admin/role-update";
+        return "admin/role-update";
     }
 
     @RequestMapping(value = "/role/do-update/{id}")

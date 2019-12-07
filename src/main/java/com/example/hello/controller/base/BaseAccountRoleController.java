@@ -8,12 +8,12 @@ public class BaseAccountRoleController {
 
     @RequestMapping(value = "/account-role")
     public String getAll() {
-        return "/admin/role-info";
+        return "admin/role-info";
     }
 
     @RequestMapping(value = "/account-role/details/{i}")
     public String detailRole() {
-        return "/admin/account-role-details";
+        return "admin/account-role-details";
     }
 
     @RequestMapping(value = "/account-role/do-create")
@@ -23,12 +23,12 @@ public class BaseAccountRoleController {
 
     @RequestMapping(value = "/account-role/create")
     public String createRole() {
-        return "/admin/account-role-create";
+        return "admin/account-role-create";
     }
 
     @RequestMapping(value = "/account-role/update/{id}")
     public String updateRole() {
-        return "/admin/account-role-update";
+        return "admin/account-role-update";
     }
 
     @RequestMapping(value = "/account-role/do-update/{id}")

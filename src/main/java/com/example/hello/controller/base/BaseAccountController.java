@@ -8,17 +8,17 @@ public class BaseAccountController {
 
     @RequestMapping(value = "/account")
     public String getAll() {
-        return "/admin/account-info";
+        return "admin/account-info";
     }
 
     @RequestMapping(value = "/account/details/{i}")
     public String detailAccount() {
-        return "/admin/account-details";
+        return "admin/account-details";
     }
 
     @RequestMapping(value = "/account/create")
     public String createAccount() {
-        return "/admin/account-create";
+        return "admin/account-create";
     }
 
     @RequestMapping(value = "/account/do-create")
@@ -28,7 +28,7 @@ public class BaseAccountController {
 
     @RequestMapping(value = "/account/update/{id}")
     public String updateAccount() {
-        return "/admin/account-update";
+        return "admin/account-update";
     }
 
     @RequestMapping(value = "/account/do-update/{id}")
