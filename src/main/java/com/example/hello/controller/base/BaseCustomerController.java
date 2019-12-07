@@ -22,7 +22,7 @@ public class BaseCustomerController {
 
     @RequestMapping(value = "/customer")
     public String getAll(Model model) {
-        model.addAttribute("listCustomer", this.customerService.getAllCustomer());
+        model.addAttribute("customerList", this.customerService.getAllCustomer());
         return "customer-info";
     }
 

@@ -1,12 +1,20 @@
 package com.example.hello.controller.base;
 
+import com.example.hello.service.StatusService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BaseStatusController {
+
+    @Autowired
+    private StatusService statusService;
+
     @RequestMapping(value = "/status")
-    public String getAll() {
+    public String getAll(Model model) {
+        model.addAttribute("statusList", this.statusService.getAllStatus());
         return "status-info";
     }
 

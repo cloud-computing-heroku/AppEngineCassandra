@@ -41,19 +41,19 @@
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Fullname</th>
+                    <th>Name</th>
+                    <th>Created</th>
+                    <th colspan="3"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <th:block th:each="user : ${accountList}">
+                <th:block th:each="sta : ${statusList}">
                     <tr>
-                        <td th:text="${user.getId()}"></td>
-                        <td th:text="${user.getUsername()}"></td>
-                        <td th:text="${user.getPassword()}"></td>
-                        <td th:text="${user.getFullname()}"></td>
+                        <td th:text="${sta.getName()}"></td>
+                        <td th:text="${sta.getCreatedAt()}"></td>
+                        <td><a href="#">Edit</a></td>
+                        <td><a href="#">Delete</a></td>
+                        <td><a href="#">Details</a></td>
                     </tr>
                 </th:block>
                 </tbody>

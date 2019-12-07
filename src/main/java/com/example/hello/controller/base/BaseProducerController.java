@@ -1,13 +1,20 @@
 package com.example.hello.controller.base;
 
+import com.example.hello.service.ProducerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BaseProducerController {
 
+    @Autowired
+    private ProducerService producerService;
+
     @RequestMapping(value = "/producer")
-    public String getAll() {
+    public String getAll(Model model) {
+        model.addAttribute("producerList", this.producerService.getAllProducer());
         return "producer-info";
     }
 

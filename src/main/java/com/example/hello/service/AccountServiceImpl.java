@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class AccountServiceImpl implements AccountService {
+
     @Autowired
     private AccountRepository accountRepository;
 
@@ -43,4 +44,5 @@ public class AccountServiceImpl implements AccountService {
         }
         return false;
     }
+
 }

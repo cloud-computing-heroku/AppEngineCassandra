@@ -24,14 +24,18 @@ public class Account {
     @Column("fullname")
     private String fullname;
 
+    @Column("enabled")
+    private boolean enabled;
+
     public Account() {
     }
 
-    public Account(UUID id, String username, String password, String fullname) {
+    public Account(UUID id, String username, String password, String fullname, boolean enabled) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.fullname = fullname;
+        this.enabled = enabled;
     }
 
     public UUID getId() {
@@ -66,6 +70,14 @@ public class Account {
         this.fullname = fullname;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -73,6 +85,7 @@ public class Account {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", fullname='" + fullname + '\'' +
+                ", enabled=" + enabled +
                 '}';
     }
 }

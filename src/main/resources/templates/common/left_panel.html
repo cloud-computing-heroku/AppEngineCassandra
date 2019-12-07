@@ -37,24 +37,25 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"> <i class="menu-icon fa fa-home"></i>Components</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Employee</a></li>
-                        <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Customer</a></li>
-                        <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Supplier</a></li>
-                        <li><i class="fa fa-share-square-o"></i><a href="ui-social-buttons.html">Producer</a></li>
-                        <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">ProductType</a></li>
-                        <li><i class="fa fa-bug"></i><a href="ui-alerts.html">Shiper</a></li>
-                        <li><i class="fa fa-spinner"></i><a href="ui-progressbar.html">Status</a></li>
-                        <li><i class="fa fa-fire"></i><a href="ui-modals.html">Product</a></li>
-                        <li><i class="fa fa-book"></i><a href="ui-switches.html">Order</a></li>
+                        <!--                        <a th:href="@{/user-save}">Add New User</a>-->
+                        <li><i class="fa fa-puzzle-piece"></i><a th:href="@{/employee}">Employee</a></li>
+                        <li><i class="fa fa-id-badge"></i><a th:href="@{/customer}">Customer</a></li>
+                        <li><i class="fa fa-bars"></i><a th:href="@{/supplier}">Supplier</a></li>
+                        <li><i class="fa fa-share-square-o"></i><a th:href="@{/producer}">Producer</a></li>
+                        <li><i class="fa fa-id-card-o"></i><a th:href="@{/product-type}">ProductType</a></li>
+                        <li><i class="fa fa-bug"></i><a th:href="@{/shiper}">Shiper</a></li>
+                        <li><i class="fa fa-spinner"></i><a th:href="@{/status}">Status</a></li>
+                        <li><i class="fa fa-fire"></i><a th:href="@{/product}">Product</a></li>
+                        <li><i class="fa fa-book"></i><a th:href="@{/order}">Order</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Admin</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-user"></i><a href="tables-basic.html">Account</a></li>
-                        <li><i class="fa fa-suitcase"></i><a href="tables-data.html">Role</a></li>
-                        <li><i class="fa fa-bolt"></i><a href="tables-data.html">Grant Privilege</a></li>
+                        <li><i class="fa fa-user"></i><a th:href="@{/account}">Account</a></li>
+                        <li><i class="fa fa-suitcase"></i><a th:href="@{/role}">Role</a></li>
+                        <li><i class="fa fa-bolt"></i><a th:href="@{/account-role}">Grant Privilege</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">

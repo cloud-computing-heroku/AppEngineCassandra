@@ -1,14 +1,21 @@
 package com.example.hello.controller.base;
 
+import com.example.hello.service.AccountRoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BaseAccountRoleController {
 
+    @Autowired
+    private AccountRoleService accountRoleService;
+
     @RequestMapping(value = "/account-role")
-    public String getAll() {
-        return "admin/role-info";
+    public String getAll(Model model) {
+        model.addAttribute("accountRoleList", this.accountRoleService.getAllAccountRole());
+        return "admin/account-role-info";
     }
 
     @RequestMapping(value = "/account-role/details/{i}")

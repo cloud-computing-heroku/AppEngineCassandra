@@ -1,13 +1,20 @@
 package com.example.hello.controller.base;
 
+import com.example.hello.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BaseProductController {
 
+    @Autowired
+    protected ProductService productService;
+
     @RequestMapping(value = "/product")
-    public String getAll() {
+    public String getAll(Model model) {
+        model.addAttribute("productList", this.productService.getAllProduct());
         return "product-info";
     }
 

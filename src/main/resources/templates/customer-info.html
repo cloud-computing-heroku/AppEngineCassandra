@@ -28,7 +28,6 @@
 <!-- Left Panel -->
 <div th:replace="common/left_panel :: left-panel"></div>
 <!--<div th:include="common/left_panel"></div>-->
-
 <!-- Left Panel -->
 
 <!-- Right Panel -->
@@ -41,19 +40,33 @@
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
                     <th>Fullname</th>
+                    <th>DateOfBirth</th>
+                    <th>Gender</th>
+                    <th>Mail</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Created</th>
+                    <th colspan="3"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <th:block th:each="user : ${accountList}">
+                <th:block th:each="cus : ${customerList}">
                     <tr>
-                        <td th:text="${user.getId()}"></td>
-                        <td th:text="${user.getUsername()}"></td>
-                        <td th:text="${user.getPassword()}"></td>
-                        <td th:text="${user.getFullname()}"></td>
+                        <td th:text="${cus.getFullname()}"></td>
+                        <td th:text="${cus.getDateOfBirth()}"></td>
+                        <td th:text="${cus.getGender()}"></td>
+                        <td th:text="${cus.getMail()}"></td>
+                        <td th:text="${cus.getPhone()}"></td>
+                        <td th:text="${cus.getAddress()}"></td>
+                        <td th:text="${cus.getCreatedAt()}"></td>
+                        <td><a href="#">Edit</a></td>
+                        <td><a href="#">Delete</a></td>
+                        <td><a href="#">Details</a></td>
+<!--                        <a th:href="@{/user-save}">Add New User</a>-->
+<!--                        <td><a th:href="${'/user-view/'+user.getId()}">View</a></td>-->
+<!--                        <td><a th:href="${'/user-update/'+user.getId()}">Edit</a></td>-->
+<!--                        <td><a th:href="${'/deleteUser/'+user.getId()}">Delete</a></td>-->
                     </tr>
                 </th:block>
                 </tbody>
