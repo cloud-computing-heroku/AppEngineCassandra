@@ -7,12 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "/admin")
 public class BaseOrderController {
 
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping(value = "/order")
+    @RequestMapping(value = "/order-info")
     public String getAll(Model model) {
         model.addAttribute("orderList", this.orderService.getAllOrder());
         model.addAttribute("root", "Category");
@@ -21,33 +22,33 @@ public class BaseOrderController {
         return "order-info";
     }
 
-    @RequestMapping(value = "/order/details/{i}")
+    @RequestMapping(value = "/order-details/{i}")
     public String detailOrder() {
         return "order-details";
     }
 
-    @RequestMapping(value = "/order/create")
+    @RequestMapping(value = "/order-create")
     public String createOrder() {
         return "order-create";
     }
 
-    @RequestMapping(value = "/order/do-create")
+    @RequestMapping(value = "/order-do-create")
     public String doCreateOrder() {
-        return "redirect:/order";
+        return "redirect:/admin/order-info";
     }
 
-    @RequestMapping(value = "/order/update/{id}")
+    @RequestMapping(value = "/order-update/{id}")
     public String updateOrder() {
         return "order-update";
     }
 
-    @RequestMapping(value = "/order/do-update/{id}")
+    @RequestMapping(value = "/order-do-update/{id}")
     public String doUpdateOrder() {
-        return "redirect:/order";
+        return "redirect:/admin/order-info";
     }
 
-    @RequestMapping(value = "/order/delete/{id}")
+    @RequestMapping(value = "/order-delete/{id}")
     public String deleteOrder() {
-        return "redirect:/order";
+        return "redirect:/admin/order-info";
     }
 }

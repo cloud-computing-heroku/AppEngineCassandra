@@ -6,7 +6,9 @@ import org.springframework.data.cassandra.core.mapping.CassandraType;
 import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Table("employee")
@@ -21,6 +23,7 @@ public class Employee {
 
     @Column("date_birth")
     @CassandraType(type = DataType.Name.DATE)
+//    @DateTimeFormat
     private LocalDate dateOfBirth;
 
     @Column("gender")

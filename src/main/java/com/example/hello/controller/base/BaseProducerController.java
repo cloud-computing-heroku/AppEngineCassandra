@@ -7,12 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "/admin")
 public class BaseProducerController {
 
     @Autowired
     private ProducerService producerService;
 
-    @RequestMapping(value = "/producer")
+    @RequestMapping(value = "/producer-info")
     public String getAll(Model model) {
         model.addAttribute("producerList", this.producerService.getAllProducer());
         model.addAttribute("root", "Category");
@@ -21,33 +22,33 @@ public class BaseProducerController {
         return "producer-info";
     }
 
-    @RequestMapping(value = "/producer/details/{i}")
+    @RequestMapping(value = "/producer-details/{i}")
     public String detailProducer() {
         return "producer-details";
     }
 
-    @RequestMapping(value = "/producer/create")
+    @RequestMapping(value = "/producer-create")
     public String createProducer() {
         return "producer-create";
     }
 
-    @RequestMapping(value = "/producer/do-create")
+    @RequestMapping(value = "/producer-do-create")
     public String doCreateProducer() {
-        return "redirect:/producer";
+        return "redirect:/admin/producer-info";
     }
 
-    @RequestMapping(value = "/producer/update/{id}")
+    @RequestMapping(value = "/producer-update/{id}")
     public String updateProducer() {
         return "producer-update";
     }
 
-    @RequestMapping(value = "/producer/do-update/{id}")
+    @RequestMapping(value = "/producer-do-update/{id}")
     public String doUpdateProducer() {
-        return "redirect:/producer";
+        return "redirect:/admin/producer-info";
     }
 
-    @RequestMapping(value = "/producer/delete/{id}")
+    @RequestMapping(value = "/producer-delete/{id}")
     public String deleteProducer() {
-        return "redirect:/producer";
+        return "redirect:/admin/producer-info";
     }
 }

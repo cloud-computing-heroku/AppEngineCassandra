@@ -6,18 +6,30 @@
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+        }
 
-    <link rel="stylesheet" href="css/vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/vendors/themify-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="css/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="css/vendors/selectFX/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="css/vendors/jqvmap/dist/jqvmap.min.css">
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+
+    <link rel="apple-touch-icon" th:href="@{apple-icon.png}">
+    <link rel="shortcut icon" th:href="@{favicon.ico}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendors/bootstrap/dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendors/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendors/themify-icons/css/themify-icons.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendors/flag-icon-css/css/flag-icon.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendors/selectFX/css/cs-skin-elastic.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendors/jqvmap/dist/jqvmap.min.css}">
 
 
-    <link rel="stylesheet" href="css/assets/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/assets/css/style.css}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -38,41 +50,170 @@
 
     <div class="content mt-3">
         <div class="card-body">
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Fullname</th>
-                </tr>
-                </thead>
-                <tbody>
-                <th:block th:each="user : ${accountList}">
-                    <tr>
-                        <td th:text="${user.getId()}"></td>
-                        <td th:text="${user.getUsername()}"></td>
-                        <td th:text="${user.getPassword()}"></td>
-                        <td th:text="${user.getFullname()}"></td>
-                    </tr>
-                </th:block>
-                </tbody>
-            </table>
+            <!-- Form -->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Product Form</strong>
+                    </div>
+                    <div class="card-body card-block">
+                        <form th:action="@{/admin/product-do-update/{id}(id=${productDetails.getId()})}" th:object="${productDetails}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="productname-input" class=" form-control-label">Product Name</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="productname-input" th:field="*{name}" placeholder="Enter Product Name" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select-supplier" class=" form-control-label">Supplier Name</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <select th:field="*{supplierName}" id="select-supplier" class="form-control">
+                                        <option value="">Please select</option>
+                                        <option th:each="sups : ${suppliers}" th:value="${sups.name}" th:text="${sups.name}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select-producer" class=" form-control-label">Producer Name</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <select th:field="*{producerName}" id="select-producer" class="form-control">
+                                        <option value="">Please select</option>
+                                        <option th:each="pro : ${producers}" th:value="${pro.name}" th:text="${pro.name}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select-type" class=" form-control-label">Type Name</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <select th:field="*{typeName}" id="select-type" class="form-control">
+                                        <option value="">Please select</option>
+                                        <option th:each="typ : ${producTypes}" th:value="${typ.name}" th:text="${typ.name}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="cost-input" class=" form-control-label">Cost</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" placeholder="0.0" id="cost-input" th:field="*{cost}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="sale-input" class=" form-control-label">Sale</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" placeholder="0.0" id="sale-input" th:field="*{sale}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="cpu-input" class=" form-control-label">CPU</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="cpu-input" th:field="*{cpu}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="ram-input" class=" form-control-label">RAM</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="ram-input" th:field="*{ram}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="rom-input" class=" form-control-label">ROM</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="rom-input" th:field="*{rom}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="screen-input" class=" form-control-label">Screen</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="screen-input" th:field="*{screen}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="port-input" class=" form-control-label">Port</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="port-input" th:field="*{port}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="camera-input" class=" form-control-label">Camera</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="camera-input" th:field="*{camera}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="pin-input" class=" form-control-label">Pin</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="pin-input" th:field="*{pin}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="os-input" class=" form-control-label">OS</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="os-input" th:field="*{os}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="connect-input" class=" form-control-label">Connect</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="connect-input" th:field="*{connect}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="size-input" class=" form-control-label">Size</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="size-input" th:field="*{size}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="color-input" class=" form-control-label">Color</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="color-input" th:field="*{color}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="weight-input" class=" form-control-label">Weight</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="number" step="any" id="weight-input" th:field="*{weight}" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Other</label></div>
+                                <div class="col-12 col-md-9"><textarea th:field="*{other}"  id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea></div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-3"></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="submit" value="Update" class="form-control">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Form -->
         </div>
     </div>
 </div>
 <!-- Right Panel -->
 
-<script src="css/vendors/jquery/dist/jquery.min.js"></script>
-<script src="css/vendors/popper.js/dist/umd/popper.min.js"></script>
-<script src="css/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="css/assets/js/main.js"></script>
-<script src="css/vendors/chart.js/dist/Chart.bundle.min.js"></script>
-<script src="css/assets/js/dashboard.js"></script>
-<script src="css/assets/js/widgets.js"></script>
-<script src="css/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
-<script src="css/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-<script src="css/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script th:src="@{/css/vendors/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{/css/vendors/popper.js/dist/umd/popper.min.js}"></script>
+<script th:src="@{/css/vendors/bootstrap/dist/js/bootstrap.min.js}"></script>
+<script th:src="@{/css/assets/js/main.js}"></script>
+<script th:src="@{/css/vendors/chart.js/dist/Chart.bundle.min.js}"></script>
+<script th:src="@{/css/assets/js/dashboard.js}"></script>
+<script th:src="@{/css/assets/js/widgets.js}"></script>
+<script th:src="@{/css/vendors/jqvmap/dist/jquery.vmap.min.js}"></script>
+<script th:src="@{/css/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js}"></script>
+<script th:src="@{/css/vendors/jqvmap/dist/maps/jquery.vmap.world.js}"></script>
 <script>
     (function ($) {
         "use strict";

@@ -21,8 +21,8 @@ public class AccountRoleServiceImpl implements AccountRoleService {
     }
 
     @Override
-    public Optional<AccountRole> getAccountRole(UUID id) {
-        return this.accountRoleRepository.findById(id);
+    public Optional<AccountRole> getAccountRoleByUsername(String username) {
+        return this.accountRoleRepository.findAccountRoleByUsername(username);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class AccountRoleServiceImpl implements AccountRoleService {
     }
 
     @Override
-    public void deleteAccount(UUID uuid) {
-        this.accountRoleRepository.deleteById(uuid);
+    public void deleteAccount(String username) {
+        this.accountRoleRepository.deleteById(username);
     }
 }

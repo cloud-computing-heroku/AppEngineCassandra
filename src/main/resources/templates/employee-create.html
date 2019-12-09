@@ -6,18 +6,30 @@
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+        }
 
-    <link rel="stylesheet" href="css/vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/vendors/themify-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="css/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="css/vendors/selectFX/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="css/vendors/jqvmap/dist/jqvmap.min.css">
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+
+    <link rel="apple-touch-icon" th:href="@{apple-icon.png}">
+    <link rel="shortcut icon" th:href="@{favicon.ico}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendors/bootstrap/dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendors/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendors/themify-icons/css/themify-icons.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendors/flag-icon-css/css/flag-icon.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendors/selectFX/css/cs-skin-elastic.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendors/jqvmap/dist/jqvmap.min.css}">
 
 
-    <link rel="stylesheet" href="css/assets/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/assets/css/style.css}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -28,7 +40,6 @@
 <!-- Left Panel -->
 <div th:replace="common/left_panel :: left-panel"></div>
 <!--<div th:include="common/left_panel"></div>-->
-
 <!-- Left Panel -->
 
 <!-- Right Panel -->
@@ -38,41 +49,104 @@
 
     <div class="content mt-3">
         <div class="card-body">
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Fullname</th>
-                </tr>
-                </thead>
-                <tbody>
-                <th:block th:each="user : ${accountList}">
-                    <tr>
-                        <td th:text="${user.getId()}"></td>
-                        <td th:text="${user.getUsername()}"></td>
-                        <td th:text="${user.getPassword()}"></td>
-                        <td th:text="${user.getFullname()}"></td>
-                    </tr>
-                </th:block>
-                </tbody>
-            </table>
+            <!-- Form -->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Employee Form</strong>
+                    </div>
+                    <div class="card-body card-block">
+                        <form th:action="@{/admin/employee-do-create}" th:object="${employee}" method="post"
+                              enctype="multipart/form-data" class="form-horizontal">
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Full
+                                    Name</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="fulname-input" th:field="*{fullname}"
+                                           placeholder="Enter Full Name" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Date Of
+                                    Birth</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="date" id="text-input" th:field="*{dateOfBirth}" placeholder="Text"
+                                           class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="email-input"
+                                                                 class=" form-control-label">Email</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="email" id="email-input" th:field="*{mail}" placeholder="Enter Email"
+                                           class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select" class=" form-control-label">Gender</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <select th:field="*{gender}" id="select" class="form-control">
+                                        <option value="please">Please select</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">FeMale</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Phone
+                                    Number</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="phone-input" th:field="*{phone}"
+                                           placeholder="Enter Phone Number" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input"
+                                                                 class=" form-control-label">Address</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="address-input" th:field="*{address}"
+                                           placeholder="Enter Address"
+                                           class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Day At
+                                    Work</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input th:type="date" th:field="*{workDate}"
+                                           class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="submit" value="Create" class="form-control">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Form -->
         </div>
+
     </div>
+</div>
 </div>
 <!-- Right Panel -->
 
-<script src="css/vendors/jquery/dist/jquery.min.js"></script>
-<script src="css/vendors/popper.js/dist/umd/popper.min.js"></script>
-<script src="css/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="css/assets/js/main.js"></script>
-<script src="css/vendors/chart.js/dist/Chart.bundle.min.js"></script>
-<script src="css/assets/js/dashboard.js"></script>
-<script src="css/assets/js/widgets.js"></script>
-<script src="css/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
-<script src="css/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-<script src="css/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script th:src="@{/css/vendors/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{/css/vendors/popper.js/dist/umd/popper.min.js}"></script>
+<script th:src="@{/css/vendors/bootstrap/dist/js/bootstrap.min.js}"></script>
+<script th:src="@{/css/assets/js/main.js}"></script>
+<script th:src="@{/css/vendors/chart.js/dist/Chart.bundle.min.js}"></script>
+<script th:src="@{/css/assets/js/dashboard.js}"></script>
+<script th:src="@{/css/assets/js/widgets.js}"></script>
+<script th:src="@{/css/vendors/jqvmap/dist/jquery.vmap.min.js}"></script>
+<script th:src="@{/css/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js}"></script>
+<script th:src="@{/css/vendors/jqvmap/dist/maps/jquery.vmap.world.js}"></script>
 <script>
     (function ($) {
         "use strict";

@@ -29,16 +29,13 @@ public class Product {
     private String typeName;
 
     @Column("cost")
-    private double cost;
+    private String cost;
 
     @Column("sale")
-    private double sale;
+    private String sale;
 
     @Column("remain")
-    private double remain;
-
-    @Column("amount")
-    private double amount;
+    private String remain;
 
     @Column("created_at")
     @CassandraType(type = DataType.Name.DATE)
@@ -47,7 +44,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(UUID id, String name, String supplierName, String producerName, String typeName, double cost, double sale, double remain, double amount, LocalDate createdAt) {
+    public Product(UUID id, String name, String supplierName, String producerName, String typeName, String cost, String sale, String remain, LocalDate createdAt) {
         this.id = id;
         this.name = name;
         this.supplierName = supplierName;
@@ -56,7 +53,6 @@ public class Product {
         this.cost = cost;
         this.sale = sale;
         this.remain = remain;
-        this.amount = amount;
         this.createdAt = createdAt;
     }
 
@@ -100,36 +96,28 @@ public class Product {
         this.typeName = typeName;
     }
 
-    public double getCost() {
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 
-    public double getSale() {
+    public String getSale() {
         return sale;
     }
 
-    public void setSale(double sale) {
+    public void setSale(String sale) {
         this.sale = sale;
     }
 
-    public double getRemain() {
+    public String getRemain() {
         return remain;
     }
 
-    public void setRemain(double remain) {
+    public void setRemain(String remain) {
         this.remain = remain;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
     }
 
     public LocalDate getCreatedAt() {

@@ -9,6 +9,8 @@ import java.util.UUID;
 public interface ProductTypeService {
     List<ProductType> getAllProductType();
 
+    List<ProductType> getAllProductTypeName();
+
     Optional<ProductType> getProductType(UUID id);
 
     void saveProductType(ProductType productType);

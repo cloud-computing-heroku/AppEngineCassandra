@@ -7,12 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "/admin")
 public class BaseSupplierController {
 
     @Autowired
     private SupplierService supplierService;
 
-    @RequestMapping(value = "/supplier")
+    @RequestMapping(value = "/supplier-info")
     public String getAll(Model model) {
         model.addAttribute("supplierList", this.supplierService.getAllSupplier());
         model.addAttribute("root", "Category");
@@ -21,33 +22,33 @@ public class BaseSupplierController {
         return "supplier-info";
     }
 
-    @RequestMapping(value = "/supplier/details/{i}")
+    @RequestMapping(value = "/supplier-details/{i}")
     public String detailSupplier() {
         return "supplier-details";
     }
 
-    @RequestMapping(value = "/supplier/do-create")
+    @RequestMapping(value = "/supplier-do-create")
     public String doCreateSupplier() {
-        return "redirect:/supplier";
+        return "redirect:/admin/supplier-info";
     }
 
-    @RequestMapping(value = "/supplier/create")
+    @RequestMapping(value = "/supplier-create")
     public String createSupplier() {
         return "supplier-create";
     }
 
-    @RequestMapping(value = "/supplier/update/{id}")
+    @RequestMapping(value = "/supplier-update/{id}")
     public String updateSupplier() {
         return "supplier-update";
     }
 
-    @RequestMapping(value = "/supplier/do-update/{id}")
+    @RequestMapping(value = "/supplier-do-update/{id}")
     public String doUpdateSupplier() {
-        return "redirect:/supplier";
+        return "redirect:/admin/supplier-info";
     }
 
-    @RequestMapping(value = "/supplier/delete/{id}")
+    @RequestMapping(value = "/supplier-delete/{id}")
     public String deleteSupplier() {
-        return "redirect:/supplier";
+        return "redirect:/admin/supplier-info";
     }
 }

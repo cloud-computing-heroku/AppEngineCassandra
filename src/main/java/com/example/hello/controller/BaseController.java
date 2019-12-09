@@ -6,11 +6,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class BaseController {
 
-    @Autowired
+    @RequestMapping(value = "/admin")
+    public String home() {
+        return "home";
+    }
+
+    @RequestMapping(value = "/login")
+    public String login() {
+        return "admin/login-page";
+    }
+
+    @RequestMapping(value = "/logout")
+    public String logoutSuccess(Model model) {
+        return "redirect:/login?message=logout";
+    }
+
+    @RequestMapping(value = "/forget")
+    public String forget(Model model) {
+        return "admin/forget-page";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register(Model model) {
+//        model.addAttribute("user", new UserEntity());
+        return "admin/register-page";
+    }
+
+/*    @Autowired
     private AccountService accountService;
 
     @Autowired
@@ -26,5 +53,5 @@ public class BaseController {
     public String index(Model model) {
         model.addAttribute("listCustomer", this.customerService.getAllCustomer());
         return "index";
-    }
+    }*/
 }

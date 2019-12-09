@@ -15,7 +15,7 @@ public class ProductDetailServiceImpl implements ProductDetailService {
     protected ProductDetailsRepository productDetailsRepository;
 
     @Override
-    public Optional<ProductDetails> getProductDetails(UUID id) {
+    public Optional<ProductDetails> getProductDetails(String id) {
         return this.productDetailsRepository.findById(id);
     }
 
@@ -25,7 +25,7 @@ public class ProductDetailServiceImpl implements ProductDetailService {
     }
 
     @Override
-    public void deleteProductDetails(UUID uuid) {
+    public void deleteProductDetails(String uuid) {
         this.productDetailsRepository.deleteById(uuid);
     }
 }

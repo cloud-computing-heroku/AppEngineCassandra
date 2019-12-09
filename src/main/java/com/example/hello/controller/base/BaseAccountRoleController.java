@@ -7,12 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "/admin")
 public class BaseAccountRoleController {
 
     @Autowired
     private AccountRoleService accountRoleService;
 
-    @RequestMapping(value = "/account-role")
+    @RequestMapping(value = "/account-role-info")
     public String getAll(Model model) {
         model.addAttribute("accountRoleList", this.accountRoleService.getAllAccountRole());
         model.addAttribute("root", "Category");
@@ -21,33 +22,33 @@ public class BaseAccountRoleController {
         return "admin/account-role-info";
     }
 
-    @RequestMapping(value = "/account-role/details/{i}")
+    @RequestMapping(value = "/account-role-details/{i}")
     public String detailRole() {
         return "admin/account-role-details";
     }
 
-    @RequestMapping(value = "/account-role/do-create")
+    @RequestMapping(value = "/account-role-do-create")
     public String doCreateAccount() {
-        return "redirect:/account-role";
+        return "redirect:/admin/account-role-info";
     }
 
-    @RequestMapping(value = "/account-role/create")
+    @RequestMapping(value = "/account-role-create")
     public String createRole() {
         return "admin/account-role-create";
     }
 
-    @RequestMapping(value = "/account-role/update/{id}")
+    @RequestMapping(value = "/account-role-update/{id}")
     public String updateRole() {
         return "admin/account-role-update";
     }
 
-    @RequestMapping(value = "/account-role/do-update/{id}")
+    @RequestMapping(value = "/account-role-do-update/{id}")
     public String doUpdateRole() {
-        return "redirect:/account-role";
+        return "redirect:/admin/account-role-info";
     }
 
-    @RequestMapping(value = "/account-role/delete/{id}")
+    @RequestMapping(value = "/account-role-delete/{id}")
     public String deleteRole() {
-        return "redirect:/account-role";
+        return "redirect:/admin/account-role-info";
     }
 }

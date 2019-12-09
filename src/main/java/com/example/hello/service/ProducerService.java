@@ -9,6 +9,8 @@ import java.util.UUID;
 public interface ProducerService {
     List<Producer> getAllProducer();
 
+    List<Producer> getAllProducerName();
+
     Optional<Producer> getProducer(UUID id);
 
     void saveProducer(Producer producer);

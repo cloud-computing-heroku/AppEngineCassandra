@@ -21,6 +21,11 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     }
 
     @Override
+    public List<ProductType> getAllProductTypeName() {
+        return this.productTypeRepository.findProductTypeNameAll();
+    }
+
+    @Override
     public Optional<ProductType> getProductType(UUID id) {
         return this.productTypeRepository.findById(id);
     }

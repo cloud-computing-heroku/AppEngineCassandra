@@ -22,6 +22,11 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
+    public List<Supplier> getAllSupplierName() {
+        return this.supplierRespository.getSupplierNameAll();
+    }
+
+    @Override
     public Optional<Supplier> getSupplier(UUID id) {
         return this.supplierRespository.findById(id);
     }

@@ -7,10 +7,10 @@ import java.util.UUID;
 
 public interface ProductDetailService {
 
-    Optional<ProductDetails> getProductDetails(UUID id);
+    Optional<ProductDetails> getProductDetails(String id);
 
     void saveProductDetails(ProductDetails productDetails);
 
-    void deleteProductDetails(UUID uuid);
+    void deleteProductDetails(String uuid);
 
 }

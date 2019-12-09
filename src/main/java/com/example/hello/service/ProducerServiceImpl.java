@@ -21,6 +21,11 @@ public class ProducerServiceImpl implements ProducerService {
     }
 
     @Override
+    public List<Producer> getAllProducerName() {
+        return this.producerRepository.findProducerNameAll();
+    }
+
+    @Override
     public Optional<Producer> getProducer(UUID id) {
         return this.producerRepository.findById(id);
     }

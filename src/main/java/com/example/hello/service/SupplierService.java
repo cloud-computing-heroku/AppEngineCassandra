@@ -10,6 +10,8 @@ import java.util.UUID;
 public interface SupplierService {
     List<Supplier> getAllSupplier();
 
+    List<Supplier> getAllSupplierName();
+
     Optional<Supplier> getSupplier(UUID id);
 
     void saveSupplier(Supplier supplier);

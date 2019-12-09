@@ -38,32 +38,33 @@
                        aria-expanded="false"> <i class="menu-icon fa fa-home"></i>Components</a>
                     <ul class="sub-menu children dropdown-menu">
                         <!--                        <a th:href="@{/user-save}">Add New User</a>-->
-                        <li><i class="fa fa-puzzle-piece"></i><a th:href="@{/employee}">Employee</a></li>
-                        <li><i class="fa fa-id-badge"></i><a th:href="@{/customer}">Customer</a></li>
-                        <li><i class="fa fa-bars"></i><a th:href="@{/supplier}">Supplier</a></li>
-                        <li><i class="fa fa-share-square-o"></i><a th:href="@{/producer}">Producer</a></li>
-                        <li><i class="fa fa-id-card-o"></i><a th:href="@{/product-type}">Product Type</a></li>
-                        <li><i class="fa fa-bug"></i><a th:href="@{/shiper}">Shiper</a></li>
-                        <li><i class="fa fa-spinner"></i><a th:href="@{/status}">Status</a></li>
-                        <li><i class="fa fa-fire"></i><a th:href="@{/product}">Product</a></li>
-                        <li><i class="fa fa-book"></i><a th:href="@{/order}">Order</a></li>
+                        <li><i class="fa fa-puzzle-piece"></i><a th:href="@{/admin/employee-info}">Employee</a></li>
+                        <li><i class="fa fa-id-badge"></i><a th:href="@{/admin/customer-info}">Customer</a></li>
+                        <li><i class="fa fa-bars"></i><a th:href="@{/admin/supplier-info}">Supplier</a></li>
+                        <li><i class="fa fa-share-square-o"></i><a th:href="@{/admin/producer-info}">Producer</a></li>
+                        <li><i class="fa fa-id-card-o"></i><a th:href="@{/admin/product-type-info}">Product Type</a>
+                        </li>
+                        <li><i class="fa fa-bug"></i><a th:href="@{/admin/shiper-info}">Shiper</a></li>
+                        <li><i class="fa fa-spinner"></i><a th:href="@{/admin/status-info}">Status</a></li>
+                        <li><i class="fa fa-fire"></i><a th:href="@{/admin/product-info}">Product</a></li>
+                        <li><i class="fa fa-book"></i><a th:href="@{/admin/order-info}">Order</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Admin</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-user"></i><a th:href="@{/account}">Account</a></li>
-                        <li><i class="fa fa-suitcase"></i><a th:href="@{/role}">Role</a></li>
-                        <li><i class="fa fa-bolt"></i><a th:href="@{/account-role}">Grant Privilege</a></li>
+                        <li><i class="fa fa-user"></i><a th:href="@{/admin/account-info}">Account</a></li>
+                        <li><i class="fa fa-suitcase"></i><a th:href="@{/admin/role-info}">Role</a></li>
+                        <li><i class="fa fa-bolt"></i><a th:href="@{/admin/account-role-info}">Grant Privilege</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"> <i class="menu-icon fa fa-lock"></i>Security</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-cloud-download"></i><a th:href="@{/employee}">Backup</a></li>
-                        <li><i class="menu-icon fa fa-cloud-upload"></i><a th:href="@{/employee}">Restore</a>
+                        <li><i class="menu-icon fa fa-cloud-download"></i><a th:href="@{/admin/employee-info}">Backup</a></li>
+                        <li><i class="menu-icon fa fa-cloud-upload"></i><a th:href="@{/admin/employee-info}">Restore</a>
                         </li>
                     </ul>
                 </li>

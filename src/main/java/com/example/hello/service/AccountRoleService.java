@@ -9,9 +9,9 @@ import java.util.UUID;
 public interface AccountRoleService {
     List<AccountRole> getAllAccountRole();
 
-    Optional<AccountRole> getAccountRole(UUID id);
+    Optional<AccountRole> getAccountRoleByUsername(String username);
 
     void saveAccountRole(AccountRole accountRole);
 
-    void deleteAccount(UUID uuid);
+    void deleteAccount(String username);
 }

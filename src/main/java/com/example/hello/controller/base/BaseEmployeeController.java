@@ -1,18 +1,26 @@
 package com.example.hello.controller.base;
 
+import com.datastax.driver.core.LocalDate;
+import com.datastax.driver.core.utils.UUIDs;
+import com.example.hello.model.Employee;
+import com.example.hello.request.EmployeeRequest;
 import com.example.hello.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDateTime;
+
 @Controller
+@RequestMapping(value = "/admin")
 public class BaseEmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping(value = "/employee")
+    @RequestMapping(value = "/employee-info")
     public String getAll(Model model) {
         model.addAttribute("employeeList", this.employeeService.getAllEmployee());
         model.addAttribute("root", "Category");
@@ -21,34 +29,53 @@ public class BaseEmployeeController {
         return "employee-info";
     }
 
-    @RequestMapping(value = "/employee/details/{i}")
-    public String detailSupplier() {
+    @RequestMapping(value = "/employee-details/{i}")
+    public String detailEmplyee() {
         return "employee-details";
     }
 
-    @RequestMapping(value = "/employee/do-create")
-    public String doCreateSupplier() {
-        return "redirect:/employee";
-    }
-
-    @RequestMapping(value = "/employee/create")
-    public String createSupplier() {
+    @RequestMapping(value = "/employee-create")
+    public String createEmplyee(Model model) {
+        model.addAttribute("employee", new EmployeeRequest());
+//        LocalDate ld = LocalDate.fromYearMonthDay(LocalDateTime.now().getYear(), LocalDateTime.now().getMonthValue(), LocalDateTime.now().getDayOfMonth());
+//        System.out.println("# " + ld);
+        model.addAttribute("root", "Category");
+        model.addAttribute("sub_root", "Components");
+        model.addAttribute("sub_active", "Employee");
         return "employee-create";
     }
 
-    @RequestMapping(value = "/employee/update/{id}")
-    public String updateSupplier() {
+    @RequestMapping(value = "/employee-do-create")
+    public String doCreateEmplyee(@ModelAttribute EmployeeRequest employee) {
+        Employee emp = new Employee();
+        java.time.LocalDate dateOfBirth = java.time.LocalDate.parse(employee.getDateOfBirth());
+        java.time.LocalDate dayAtWork = java.time.LocalDate.parse(employee.getWorkDate());
+        emp.setId(UUIDs.timeBased());
+        emp.setDateOfBirth(LocalDate.fromYearMonthDay(dateOfBirth.getYear(), dateOfBirth.getMonthValue(), dateOfBirth.getDayOfMonth()));
+        emp.setWorkDate(LocalDate.fromYearMonthDay(dayAtWork.getYear(), dayAtWork.getMonthValue(), dayAtWork.getDayOfMonth()));
+        emp.setCreatedAt(LocalDate.fromYearMonthDay(LocalDateTime.now().getYear(), LocalDateTime.now().getMonthValue(), LocalDateTime.now().getDayOfMonth()));
+        emp.setFullname(employee.getFullname());
+        emp.setAddress(employee.getAddress());
+        emp.setGender(employee.getGender());
+        emp.setMail(employee.getMail());
+        emp.setPhone(employee.getPhone());
+        this.employeeService.saveEmployee(emp);
+        return "redirect:/admin/employee-info";
+    }
+
+    @RequestMapping(value = "/employee-update/{id}")
+    public String updateEmplyee() {
         return "employee-update";
     }
 
-    @RequestMapping(value = "/employee/do-update/{id}")
+    @RequestMapping(value = "/employee-do-update/{id}")
     public String doUpdateSupplier() {
-        return "redirect:/employee";
+        return "redirect:/admin/employee-info";
     }
 
-    @RequestMapping(value = "/employee/delete/{id}")
-    public String deleteSupplier() {
-        return "redirect:/employee";
+    @RequestMapping(value = "/employee-delete/{id}")
+    public String deleteEmplyee() {
+        return "redirect:/admin/employee-info";
     }
 
  /*   @Autowired
