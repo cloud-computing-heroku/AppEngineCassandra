@@ -11,6 +11,8 @@ public interface ProductService {
 
     List<Product> getAllProduct();
 
+    List<Product> getProductByProducerName(String name);
+
     Optional<Product> getProduct(UUID id);
 
     void saveProduct(Product product);

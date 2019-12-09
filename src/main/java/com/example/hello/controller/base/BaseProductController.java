@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -217,5 +218,17 @@ public class BaseProductController {
             this.productService.deleteProduct(UUID.fromString(id));
         }
         return "redirect:/admin/product-info";
+    }
+
+    @RequestMapping(value = "/product-search")
+    public String searchProduct(@RequestParam("searchString") String name, Model model) {
+        List<Product> list = this.productService.getProductByProducerName(name);
+        System.err.println("Name = " + name);
+        if (name == "" || name == null) {
+            model.addAttribute("productList", this.productService.getAllProduct());
+        } else {
+            model.addAttribute("productList", list);
+        }
+        return "product-info";
     }
 }
